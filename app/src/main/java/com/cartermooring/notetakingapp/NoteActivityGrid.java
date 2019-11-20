@@ -4,6 +4,12 @@
  * This function is the code that sets up the user interface for NoteActivity.java
  * NoteActivityGrid.java
  */
+
+//credits
+//<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+//<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+//<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+//<div>Icons made by <a href="https://www.flaticon.com/authors/popcorns-arts" title="Icon Pond">Icon Pond</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 package com.cartermooring.notetakingapp;
 
 import android.app.Activity;
@@ -12,12 +18,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class NoteActivityGrid extends GridLayout {
 
@@ -49,7 +60,60 @@ public class NoteActivityGrid extends GridLayout {
         mailType[2] = "PERSONAL";
         mailType[3] = "OTHER";
 
-        ArrayAdapter<String> mailAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, mailType);
+        ArrayAdapter<String> mailAdapter = new ArrayAdapter<String>(context, android.R.layout.activity_list_item, android.R.id.text1, mailType){
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+
+                //String iconString = mailType[position];
+                ImageView imageView = (ImageView) view.findViewById(android.R.id.icon);
+                imageView.setImageResource(R.drawable.work);
+                switch (position){
+                    case 0:
+                        imageView.setImageResource(R.drawable.work);
+                        break;
+
+                    case 1:
+                        imageView.setImageResource(R.drawable.school);
+                        break;
+
+                    case 2:
+                        imageView.setImageResource(R.drawable.personal);
+                        break;
+
+                    case 3:
+                        imageView.setImageResource(R.drawable.other);
+            }
+
+            return view;
+    }
+
+    @Override
+    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View view = super.getDropDownView(position, convertView, parent);
+        ImageView imageView = (ImageView) view.findViewById(android.R.id.icon);
+        imageView.setImageResource(R.drawable.work);
+        switch (position){
+            case 0:
+                imageView.setImageResource(R.drawable.work);
+                break;
+
+            case 1:
+                imageView.setImageResource(R.drawable.school);
+                break;
+
+            case 2:
+                imageView.setImageResource(R.drawable.personal);
+                break;
+
+            case 3:
+                imageView.setImageResource(R.drawable.other);
+        }
+
+        return view;
+    }
+        };
         spinner.setAdapter(mailAdapter);
         spinner.setGravity(Gravity.RIGHT);
         spinner.setId(R.id.mailTypeSpinner);

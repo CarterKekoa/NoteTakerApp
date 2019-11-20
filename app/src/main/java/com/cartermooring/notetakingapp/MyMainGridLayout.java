@@ -32,11 +32,8 @@ public class MyMainGridLayout extends GridLayout {
         GridLayout.LayoutParams layoutParams1 = new GridLayout.LayoutParams(rowSpec1, colSpec1);
         layoutParams1.setGravity(Gravity.TOP); //set things to appear at the top of the page
 
-        addNewNoteButton.setId(R.id.newNote);   //set id for the button
-        addNewNoteButton.setLayoutParams(layoutParams); //have the button use same layout as grid
         listView.setId(R.id.noteList);  //set id for list view
         listView.setLayoutParams(layoutParams1); //list view uses same layout as grid
-        addView(addNewNoteButton); //add view button to screen
         addView(listView);  //add list view to grid layout
     }
 }

@@ -10,6 +10,7 @@ package com.cartermooring.notetakingapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,8 +50,6 @@ public class NoteActivity extends AppCompatActivity {
         String noteType = intent.getStringExtra("spinnerChoice");
         noteIndex = intent.getIntExtra("index", -1);
 
-
-
         title.setText(noteTitle);
         spinner.setSelection(spinnerType(noteType));
         content.setText(noteContent);
@@ -79,6 +78,7 @@ public class NoteActivity extends AppCompatActivity {
             }
         });
     }
+
      //This function sets up the spinner
      public int spinnerType(String stringType){
         if (stringType.equals("WORK")){
